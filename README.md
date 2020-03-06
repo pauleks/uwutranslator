@@ -1,5 +1,7 @@
 <div align="center">
-<img src="https://media.discordapp.net/attachments/676016325969182740/677163027669450773/uwu_translator.png" href="https://uwutranslator.ghostwolf.me">
+  <a href="https://uwutranslator.ghostwolf.me">
+    <img src="https://media.discordapp.net/attachments/676016325969182740/677163027669450773/uwu_translator.png">
+  </a>
 
 [![support][support-badge]][support-invite]
 ![servers-badge]
