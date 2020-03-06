@@ -13,6 +13,7 @@
 uwutranslator is an open-source bot, whose purpose is to bring more fun to your server by "translating" messages and turning them into so called "uwu styled" messages.
 
 <h3>Table of Contents</h3>
+
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Self-hosting](#self-hosting)
@@ -47,6 +48,7 @@ Before self-hosting the bot, it would be awesome if you told me about your plans
 
 
 <h2 align="center">License</h2>
+
 [Licensed under GNU General Public License v3.0](https://github.com/TheOnlyGhostwolf/uwutranslator/blob/master/LICENSE)
 
 [support-invite]: https://discord.gg/tY3fMKh
