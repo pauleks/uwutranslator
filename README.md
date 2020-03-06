@@ -42,7 +42,7 @@ Contributions are welcomed, but you should open an issue first to discuss them. 
 
 
 <h2 align="center">Self-hosting</h2>
-You are allowed to self-host the bot. However, I will not provide support for this. Remember to accommodate with the [license](#license). 
+You are allowed to self-host the bot. However, I will not provide support for this. Remember to accommodate with the [license](#license)
 
 Before self-hosting the bot, it would be awesome if you told me about your plans - please join our [support server](https://discord.gg/tY3fMKh) and direct message me **Ghostwolf#6735** :)
 
