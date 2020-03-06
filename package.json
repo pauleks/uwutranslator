@@ -1,0 +1,22 @@
+{
+  "name": "uwutranslator",
+  "version": "1.0.0",
+  "description": "Discord bot that uwu-ifies your messages. uwu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "TheOnlyGhostwolf",
+  "homepage": "https://uwutranslator.ghostwolf.me",
+  "repository": "https://github.com/TheOnlyGhostwolf/uwutranslator",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "8.2.0",
+    "express-ping": "1.4.0",
+    "axios": "^0.19.2",
+    "dblapi.js": "^2.3.0"
+  }
+}
