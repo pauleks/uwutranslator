@@ -80,16 +80,13 @@ const faces = [
   "(´･ω･\`)",
   "(=^-ω-^=)",
   "ヽ(=^･ω･^=)丿",
-  "ʚ(*´꒳`*)ɞ",
-  "(´♡ω♡`)",
-  "(´♡ω♡`)",
-  "(´♡ω♡`)",
+  "ʚ(\*´꒳\`\*)ɞ",
+  "(´♡ω♡\`)",
   "★~(◡﹏◕✿)",
   "★~(◡ω◕✿)",
   "★~(◡﹏◡✿)",
   "★~(◠︿⊙✿)",
   "｡◕ ‿ ◕｡",
-  "(´･ω･`)",
   "(◠︿◠✿)"
 ];
 
@@ -295,7 +292,7 @@ client.on("message", async message => {
         message.channel.send(
           "Hewwo <@" +
             message.author.id +
-            ">! (^w^)/\nI'm **${client.user.username}**, I uwu-ify messages. If you want to check how to use me, use **<@!635507578008240165> --help** command :3"
+            ">! (^w^)/\n\nI'm **" + client.user.username + "**, I uwu-ify messages. If you want to check how to use me, use **<@!" + client.user.id + "> --help** command :3"
         )
         .catch(error => errored(error));
       } else if (command === "--ping") {
