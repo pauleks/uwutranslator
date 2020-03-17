@@ -17,9 +17,6 @@ const clean = text => {
   else return text;
 };
 
-
-
-
 const faces = [
   "(・`ω´・)",
   ";;w;;",
@@ -89,7 +86,6 @@ const faces = [
   "｡◕ ‿ ◕｡",
   "(◠︿◠✿)"
 ];
-
 const statuses = [
   "with uwu faces",
   'a game called "OwO what\'s this?!?"',
@@ -102,19 +98,19 @@ const statuses = [
   "Hewwo dewr~!"
 ];
 
-function Owoify(str) {
-  str = str.replace(/(?:r|l)/g, "w");
-  str = str.replace(/(?:R|L)/g, "W");
-  str = str.replace(/n([aeiou])/g, "ny$1");
-  str = str.replace(/N([aeiou])/g, "Ny$1");
-  str = str.replace(/N([AEIOU])/g, "NY$1");
-  str = str.replace(/ove/g, "uv");
+function uwuify(str) {
   str = str.replace(/god/g, "gawd");
   str = str.replace(/God/g, "Gawd");
   str = str.replace(/father/gi, "daddy");
   str = str.replace(/papa/gi, "papi");
   str = str.replace(/mom/g, "mommy");
   str = str.replace(/mother/g, "mommy");
+  str = str.replace(/(?:r|l)/g, "w");
+  str = str.replace(/(?:R|L)/g, "W");
+  str = str.replace(/n([aeiou])/g, "ny$1");
+  str = str.replace(/N([aeiou])/g, "Ny$1");
+  str = str.replace(/N([AEIOU])/g, "NY$1");
+  str = str.replace(/ove/g, "uv");
 
   return str;
 }
@@ -130,45 +126,43 @@ function makeid(length) {
   return result;
 }
 
-client.on("ready", () => {
-  axios.post(
-    webhook,
-    {
-      content:
-        "Bot has started, with " +
-        client.users.size +
-        " users, in " +
-        client.channels.size +
-        " channels of " +
-        client.guilds.size +
-        " guilds."
-    }
+function statuschange() {
+  client.user.setActivity(
+    `${statuses[Math.floor(Math.random() * statuses.length)]} | @${
+      client.user.username
+    } --help`
   );
+}
+
+client.on("ready", () => {
+  axios.post(webhook, {
+    content:
+      "Bot has started, with " +
+      client.users.size +
+      " users, in " +
+      client.channels.size +
+      " channels of " +
+      client.guilds.size +
+      " guilds."
+  });
 
   console.log(
     `Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`
   );
-  client.user.setActivity(
-    `${
-      statuses[Math.floor(Math.random() * statuses.length)]
-    } | @${client.user.username} --help`
-  );
+  setInterval(statuschange, 120000);
 });
 
 client.on("guildCreate", guild => {
-  axios.post(
-    webhook,
-    {
-      content:
-        ":green_square: New guild joined: " +
-        guild.name +
-        " (id: " +
-        guild.id +
-        "). This guild has " +
-        guild.memberCount +
-        " members!"
-    }
-  );
+  axios.post(webhook, {
+    content:
+      ":green_square: New guild joined: " +
+      guild.name +
+      " (id: " +
+      guild.id +
+      "). This guild has " +
+      guild.memberCount +
+      " members!"
+  });
 
   console.log(
     `New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`
@@ -176,88 +170,77 @@ client.on("guildCreate", guild => {
 });
 
 client.on("guildDelete", guild => {
-  axios.post(
-    webhook,
-    {
-      content:
-        ":red_square: I have been removed from: " +
-        guild.name +
-        " (id: " +
-        guild.id +
-        ")"
-    }
-  );
+  axios.post(webhook, {
+    content:
+      ":red_square: I have been removed from: " +
+      guild.name +
+      " (id: " +
+      guild.id +
+      ")"
+  });
 
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 });
 
 client.on("message", async message => {
   if (message.author.bot) return;
-  
+
   const errored = error => {
-          if (error.code == 50013)
-            message.channel
-              .send(
-                ":x: Oh no qwq! I don't have proper permissions to send you the content! Please make sure I have permissions to **Embed Links** in this server."
-              )
-              .catch(oof => {
-                message.author
-                  .send(
-                    ":x: Oh no qwq! I don't have proper permissions to send you the content! Please make sure I have permissions to **Send Messages** in that server."
-                  )
-                  .catch(err2 => {
-                    if (err2.code == 50007) {
-                      axios.post(
-                        webhook,
-                        {
-                          content:
-                            ":x: I tried sending an error DM to " +
-                            message.author.tag +
-                            ", but they have their DMs closed :|"
-                        }
-                      );
-                    }
-                  });
-              });
-          else {
-            const errorid = makeid(6);
-            axios.post(
-              errorwebhook,
-              {
-                content:
-                  "`" +
-                  errorid +
-                  "` - " +
-                  message.author.tag +
-                  " - ID: " +
-                  message.author.id +
-                  ":\n```" +
-                  error + "```"
+    if (error.code == 50013)
+      message.channel
+        .send(
+          ":x: Oh no qwq! I don't have proper permissions to send you the content! Please make sure I have permissions to **Embed Links** in this server."
+        )
+        .catch(oof => {
+          message.author
+            .send(
+              ":x: Oh no qwq! I don't have proper permissions to send you the content! Please make sure I have permissions to **Send Messages** in that server."
+            )
+            .catch(err2 => {
+              if (err2.code == 50007) {
+                axios.post(webhook, {
+                  content:
+                    ":x: I tried sending an error DM to " +
+                    message.author.tag +
+                    ", but they have their DMs closed :|"
+                });
               }
-            );
-            message.author
-              .send(
-                "Hi there! Something went wrong while executing your command. If you need more help, you can join my support server @ <https://discord.gg/eq6kwNJ> and give this code for error troubleshooting: `" +
-                  errorid +
-                  "`"
-              )
-              .catch(err2 => {
-                if (err2.code == 50007) {
-                  axios.post(
-                    errorwebhook,
-                    {
-                      content:
-                        ":x: I tried sending a DM to " +
-                        message.author.tag +
-                        "about the error `" +
-                        errorid +
-                        "` but they have their DMs closed :|"
-                    }
-                  );
-                }
-              });
+            });
+        });
+    else {
+      const errorid = makeid(6);
+      axios.post(errorwebhook, {
+        content:
+          "`" +
+          errorid +
+          "` - " +
+          message.author.tag +
+          " - ID: " +
+          message.author.id +
+          ":\n```" +
+          error +
+          "```"
+      });
+      message.author
+        .send(
+          "Hi there! Something went wrong while executing your command. If you need more help, you can join my support server @ <https://discord.gg/eq6kwNJ> and give this code for error troubleshooting: `" +
+            errorid +
+            "`"
+        )
+        .catch(err2 => {
+          if (err2.code == 50007) {
+            axios.post(errorwebhook, {
+              content:
+                ":x: I tried sending a DM to " +
+                message.author.tag +
+                "about the error `" +
+                errorid +
+                "` but they have their DMs closed :|"
+            });
           }
-        };
+        });
+    }
+  };
 
   if (message.isMentioned(client.user)) {
     const messagebutstring = message.content;
@@ -271,32 +254,39 @@ client.on("message", async message => {
         .split(/ +/g);
       const command = args.shift();
 
-      axios.post(
-        webhook,
-        {
-          content:
-            ":robot: Command ran by " +
-            message.author.username +
-            "#" +
-            message.author.discriminator +
-            " (ID: " +
-            message.author.id +
-            "): " +
-            command +
-            " " +
-            args
-        }
-      );
+      const str = command + " " + args.join(" ");
 
+      axios.post(webhook, {
+        content:
+          ":robot: Command ran by " +
+          message.author.username +
+          "#" +
+          message.author.discriminator +
+          " (ID: `" +
+          message.author.id +
+          "`) in " +
+          message.guild.name +
+          " (Guild ID: `" +
+          message.guild.id +
+          "`): " +
+          str
+      });
       if (command == "" || command == " ") {
-        message.channel.send(
-          "Hewwo <@" +
-            message.author.id +
-            ">! (^w^)/\n\nI'm **" + client.user.username + "**, I uwu-ify messages. If you want to check how to use me, use **<@!" + client.user.id + "> --help** command :3"
-        )
-        .catch(error => errored(error));
+        message.channel
+          .send(
+            "Hewwo <@" +
+              message.author.id +
+              ">! (^w^)/\n\nI'm **" +
+              client.user.username +
+              "**, I uwu-ify messages. If you want to check how to use me, use **<@!" +
+              client.user.id +
+              "> --help** command :3"
+          )
+          .catch(error => errored(error));
       } else if (command === "--ping") {
-        const m = await message.channel.send("Ping?").catch(error => errored(error));
+        const m = await message.channel
+          .send("Ping?")
+          .catch(error => errored(error));
         m.edit(
           `Pong! Latency is ${m.createdTimestamp -
             message.createdTimestamp}ms. API Latency is ${Math.round(
@@ -317,9 +307,6 @@ client.on("message", async message => {
           .then(m => {
             client.destroy();
           });
-      } else if (command == "uwu" || command == "owo") {
-        message
-          .reply(faces[Math.floor(Math.random() * faces.length)]).catch(error => errored(error))
       } else if (command === "--eval") {
         let isBotOwner = message.author.id == developer;
         if (!isBotOwner) {
@@ -336,7 +323,9 @@ client.on("message", async message => {
           if (typeof evaled !== "string")
             evaled = require("util").inspect(evaled);
 
-          message.channel.send(clean(evaled), { code: "xl" }).catch(error => errored(error));
+          message.channel
+            .send(clean(evaled), { code: "xl" })
+            .catch(error => errored(error));
         } catch (err) {
           message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
         }
@@ -386,20 +375,18 @@ client.on("message", async message => {
           message.author.avatarURL
         );
 
-        message.channel.send(helpembed).catch(error => errored(error))
+        message.channel.send(helpembed).catch(error => errored(error));
+      } else if (str.includes("discord.gg")) {
+        message
+          .reply("don't send invite links using me >:(")
+          .catch(error => errored(error));
       } else {
-        const str = command + " " + args.join(" ");
-
-        /*console.log(str);
-        axios.post(
-          webhook,
-          {
-            content: str
-          }
-        );*/
+        var firstletter = str.substring(0, 1);
 
         const uwufiedstr =
-          Owoify(str) +
+          firstletter +
+          "-" +
+          uwuify(str) +
           " " +
           faces[Math.floor(Math.random() * faces.length)] +
           " ";
@@ -416,15 +403,13 @@ client.on("message", async message => {
           message.author.avatarURL
         );
 
-        message.channel.send(uwuembed).catch(error => errored(error))
+        message.channel.send(uwuembed).catch(error => errored(error));
       }
     }
   }
 });
 
 client.login(token);
-
-
 
 const DBL = require("dblapi.js");
 const dbl = new DBL(dbltoken, client);
