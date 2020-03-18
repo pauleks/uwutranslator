@@ -376,23 +376,24 @@ client.on("message", async message => {
         );
 
         message.channel.send(helpembed).catch(error => errored(error));
-      } else if (str.includes("discord.gg")) {
+      } else if (str.includes("discord.gg") || str.includes("discordapp.com/invite")) {
         message
           .reply("don't send invite links using me >:(")
           .catch(error => errored(error));
       } else {
-        var firstletter = str.substring(0, 1);
+        var uwuifiedstr = uwuify(str);
+        var firstletter = uwuifiedstr.substring(0, 1);
 
-        const uwufiedstr =
+        uwuifiedstr =
           firstletter +
           "-" +
-          uwuify(str) +
+          uwuifiedstr +
           " " +
           faces[Math.floor(Math.random() * faces.length)] +
           " ";
 
         let uwuembed = new Discord.RichEmbed({
-          description: uwufiedstr
+          description: uwuifiedstr
         });
 
         uwuembed.setColor(16761576);
