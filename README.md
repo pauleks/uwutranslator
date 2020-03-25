@@ -12,6 +12,7 @@
 ---
 
 <h2 align="center">uwutranslator</h2>
+
 uwutranslator is an open-source bot, which purpose is to bring more fun to your server by "translating" messages and turning them into so called "uwu styled" messages.
 
 <h3>Table of Contents</h3>
@@ -22,6 +23,7 @@ uwutranslator is an open-source bot, which purpose is to bring more fun to your 
 - [License](#license)
 
 <h2 align="center">Usage</h2>
+
 One of the most important features of uwutranslator is that it doesn't have any prefix - instead, it responds to mentions. So, if you want to interact with uwutranslator, you'll need to mention it. The mention must be in the front of the message in order for the bot to respond.
 
 uwutranslator has a few commands, which are listed below:
@@ -38,11 +40,14 @@ If the bot is mentioned and any other arguments are provided which are not liste
 
 
 <h2 align="center">Contributing</h2>
+
 Contributions are welcomed, but you should open an issue first to discuss them. Please remember, that the main purpose of this bot is to translate the messages - do not add any more commands which wouldn't fit the purpose of "translating". However, commands which provide more information about the bot, like `--help`, `--ping`, etc. are fine, as well as cases how to uwu-ify the message.
 
 
 <h2 align="center">Self-hosting</h2>
-You are allowed to self-host the bot. However, I will not provide support for this. Remember to accommodate with the license.
+
+You are allowed to self-host the bot. However, I will not provide support for this. Remember to accommodate with the license.  
+If you want to self-host, you have to rename the **.env.example** to **.env** and put in the required credentials.
 
 Before self-hosting the bot, it would be awesome if you told me about your plans - please join our [support server](https://discord.gg/tY3fMKh) and direct message me **Ghostwolf#6735** :)
 
