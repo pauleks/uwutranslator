@@ -183,7 +183,7 @@ client.on("guildDelete", guild => {
 });
 
 client.on("message", async message => {
-  if (message.author.bot) return;
+  if (message.author.bot || message.channel.type!="text") return;
 
   const errored = error => {
     if (error.code == 50013)
