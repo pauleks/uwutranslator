@@ -41,16 +41,13 @@ If the bot is mentioned and any other arguments are provided which are not liste
 
 <h2 align="center">Contributing</h2>
 
-Contributions are welcomed, but you should open an issue first to discuss them. Please remember, that the main purpose of this bot is to translate the messages - do not add any more commands which wouldn't fit the purpose of "translating". However, commands which provide more information about the bot, like `--help`, `--ping`, etc. are fine, as well as cases how to uwu-ify the message.
+Contributions are welcomed. Please remember, that the main purpose of this bot is to translate the messages - do not add any more commands which wouldn't fit the purpose of "translating". However, commands which provide more information about the bot, like `--help`, `--ping`, etc. are fine, as well as cases how to uwu-ify the message.
 
 
 <h2 align="center">Self-hosting</h2>
 
-You are allowed to self-host the bot. However, I will not provide support for this. Remember to accommodate with the license.  
+You are allowed to self-host the bot, but remember to accommodate with the license.  
 If you want to self-host, you have to rename the **.env.example** to **.env** and put in the required credentials.
-
-Before self-hosting the bot, it would be awesome if you told me about your plans - please join our [support server](https://discord.gg/tY3fMKh) and direct message me **Ghostwolf#6735** :)
-
 
 <h2 align="center">License</h2>
 

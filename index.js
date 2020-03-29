@@ -1,9 +1,27 @@
+/*
+    uwutranslator - Discord bot, which uwu-ifies your messages
+    Copyright (C) 2020 Paulius (Ghostwolf) Gečas
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>
+*/
+
 const Discord = require("discord.js");
 const dotenv = require("dotenv").config();
 const axios = require("axios");
 const token = process.env.TOKEN;
 const webhook = process.env.WEBHOOK;
-const errorwebhook = process.env.ERROR_WEBHOOK;
+const errorwebhook = process.env.ERRORWEBHOOK;
 const dbltoken = process.env.DBLTOKEN;
 const developer = process.env.DEVELOPER;
 
@@ -92,10 +110,11 @@ const statuses = [
   "*notices shitpost* uwu what's this?",
   "@mention me to uwu-ify messages",
   "with s-senpai~~",
-  "with the big bul... OwO",
-  "Hewwo? Hewwo?!? Intewnaw bweeding u say? owo",
   "Coded by code monkeys at uwu headquawews",
-  "Hewwo dewr~!"
+  "Hewwo dewr~!",
+  "Stay safe! uwu",
+  "Stay home!",
+  "Remember to wash your hands!"
 ];
 
 function uwuify(str) {
