@@ -3,7 +3,7 @@
     <img src="https://media.discordapp.net/attachments/676016325969182740/677163027669450773/uwu_translator.png">
   </a>
 
-[![support][support-badge]][support-invite]
+![Discord](https://img.shields.io/discord/661993788616474628?label=Join%20us%20on%20Discord&logo=discord&logoColor=ffffff)
 ![servers-badge]
 
 <strong><a href="https://discordapp.com/oauth2/authorize?client_id=635507578008240165&permissions=84992&scope=bot">CLICK HERE TO ADD UWUTRANSLATOR TO YOUR SERVER</a></strong>
@@ -52,9 +52,5 @@ If you want to self-host, you have to rename the **.env.example** to **.env** an
 <h2 align="center">License</h2>
 
 [Licensed under GNU General Public License v3.0](https://github.com/TheOnlyGhostwolf/uwutranslator/blob/master/LICENSE)
-
-[support-invite]: https://discord.gg/tY3fMKh
-[support-badge]: https://img.shields.io/discord/661993788616474628?label=chat%20on%20Discord&logo=discord&logoColor=white
-
 
 [servers-badge]: https://top.gg/api/widget/servers/635507578008240165.svg?noavatar=true&leftcolor=FFC2E8&lefttextcolor=ffffff&rightcolor=000000&righttextcolor=ffffff
