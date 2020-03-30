@@ -3,7 +3,7 @@
     <img src="https://media.discordapp.net/attachments/676016325969182740/677163027669450773/uwu_translator.png">
   </a>
 
-![Discord](https://img.shields.io/discord/661993788616474628?label=Join%20us%20on%20Discord&logo=discord&logoColor=ffffff)(https://discord.gg/7vhD4KB)
+<a href="https://discord.gg/7vhD4KB">![Discord](https://img.shields.io/discord/661993788616474628?label=Join%20us%20on%20Discord&logo=discord&logoColor=ffffff)</a>
 ![servers-badge]
 
 <strong><a href="https://discordapp.com/oauth2/authorize?client_id=635507578008240165&permissions=84992&scope=bot">CLICK HERE TO ADD UWUTRANSLATOR TO YOUR SERVER</a></strong>
