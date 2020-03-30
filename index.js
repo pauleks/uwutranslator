@@ -130,7 +130,7 @@ function uwuify(str) {
   str = str.replace(/N([aeiou])/g, "Ny$1");
   str = str.replace(/N([AEIOU])/g, "NY$1");
   str = str.replace(/ove/g, "uv");
-
+  str = str + "\~\~";
   return str;
 }
 
@@ -267,13 +267,13 @@ client.on("message", async message => {
       messagebutstring.startsWith("<@!" + client.user.id + ">") ||
       messagebutstring.startsWith("<@" + client.user.id + ">")
     ) {
-      const args = message.content
+      var args = message.content
         .slice(22)
         .trim()
         .split(/ +/g);
-      const command = args.shift();
+       var command = args.shift();
 
-      const str = command + " " + args.join(" ");
+      var str = command + " " + args.join(" ");
 
       axios.post(webhook, {
         content:
@@ -400,6 +400,9 @@ client.on("message", async message => {
           .reply("don't send invite links using me >:(")
           .catch(error => errored(error));
       } else {
+        if (str.slice(-1) == " ")
+          str = str.substring(0, str.length - 1);
+
         var uwuifiedstr = uwuify(str);
         var firstletter = uwuifiedstr.substring(0, 1);
 
