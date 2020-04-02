@@ -149,6 +149,9 @@ function statuschange() {
     } --help`
   );
 }
+process.on("unhandledRejection", error => {
+  console.error("Unhandled promise rejection:", error);
+});
 client.on("ready", () => {
   axios.post(webhook, {
     content: "Bot has started, with " +
