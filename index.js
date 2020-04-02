@@ -150,7 +150,8 @@ function statuschange() {
   );
 }
 process.on("unhandledRejection", error => {
-  console.error("Unhandled promise rejection:", error);
+  if (error.code !== 50013)
+    console.error("Unhandled promise rejection:", error);
 });
 client.on("ready", () => {
   axios.post(webhook, {
