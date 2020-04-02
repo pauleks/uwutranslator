@@ -273,13 +273,13 @@ client.on("message", async message => {
             "`): " +
             str
         });
-        if (talkedRecently.has(message.author.id)) {
+        /*if (talkedRecently.has(message.author.id)) {
             message.channel.send("Wait 2 seconds before getting typing this again. - " + message.author);
         } else {
             talkedRecently.add(message.author.id);
             setTimeout(() => {
             talkedRecently.delete(message.author.id);
-          }, 2000);
+          }, 2000);*/
         if (command == "" || command == " ") {
           message.channel
             .send(
