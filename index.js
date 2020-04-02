@@ -410,7 +410,6 @@ client.on("message", async message => {
         }
       }
     }
-  }
 });
 client.login(token);
 const DBL = require("dblapi.js");
