@@ -286,7 +286,7 @@ client.on("message", async message => {
       });
       if (talkedRecently.has(message.author.id)) {
         message.channel.send(
-          "Wait 2 seconds before getting typing this again. - " + message.author
+          "Wait 5 seconds before using me again. - " + message.author
         );
       } else {
         if (command == "" || command == " ") {
@@ -305,7 +305,7 @@ client.on("message", async message => {
           talkedRecently.add(message.author.id);
           setTimeout(() => {
             talkedRecently.delete(message.author.id);
-          }, 2000);
+          }, 5000);
         } else if (command === "--ping") {
           const m = await message.channel
             .send("Ping?")
@@ -319,7 +319,7 @@ client.on("message", async message => {
           talkedRecently.add(message.author.id);
           setTimeout(() => {
             talkedRecently.delete(message.author.id);
-          }, 2000);
+          }, 5000);
         } else if (command === "--shutdown") {
           let isBotOwner = message.author.id == developer;
           if (!isBotOwner) {
@@ -402,7 +402,7 @@ client.on("message", async message => {
           talkedRecently.add(message.author.id);
           setTimeout(() => {
             talkedRecently.delete(message.author.id);
-          }, 2000);
+          }, 5000);
         } else if (
           str.includes("discord.gg") ||
           str.includes("discordapp.com/invite")
@@ -436,7 +436,7 @@ client.on("message", async message => {
           talkedRecently.add(message.author.id);
           setTimeout(() => {
             talkedRecently.delete(message.author.id);
-          }, 2000);
+          }, 5000);
         }
       }
     }
