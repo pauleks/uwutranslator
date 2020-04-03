@@ -389,6 +389,11 @@ client.on("message", async message => {
             "[Click here](https://top.gg/bot/635507578008240165/vote)",
             true
           );
+          helpembed.addField(
+            "Legal Mumbo Jumbo",
+            "[Terms of Service](https://github.com/TheOnlyGhostwolf/uwutranslator/wiki/Terms-of-Service) | [Privacy Policy](https://github.com/TheOnlyGhostwolf/uwutranslator/wiki/Privacy-Policy)",
+            true
+          );
           helpembed.setColor(16761576);
           helpembed.setTimestamp(message.createdAt);
           helpembed.setFooter(
