@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://uwutranslator.ghostwolf.me">
-    <img src="https://i.imgur.com/3xmnlVK.png">
+    <img src="https://i.imgur.com/FspqOKi.png">
   </a>
 
 <a href="https://discord.gg/7vhD4KB">![Discord](https://img.shields.io/discord/661993788616474628?label=Join%20us%20on%20Discord&logo=discord&logoColor=ffffff)</a>
