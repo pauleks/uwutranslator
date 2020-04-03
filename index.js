@@ -33,7 +33,7 @@ const clean = text => {
   else return text;
 };
 const faces = [
-  "(・`ω´・)",
+  "(・\`ω´・)",
   ";;w;;",
   "owo",
   "UwU",
@@ -44,7 +44,7 @@ const faces = [
   "(˘³˘)",
   "(。U⁄ ⁄ω⁄ ⁄ U。)",
   "(ᵘʷᵘ)",
-  "(ᵕᴗ ᵕ⁎)",
+  "(ᵕᴗ ᵕ\⁎)",
   "uwU",
   "◔w◔",
   "⓪w⓪",
@@ -69,7 +69,7 @@ const faces = [
   "ヽ(゜∇゜)ノ",
   "(◕ω◕✿)",
   "(〃^∇^)ﾉ",
-  "(\´｡• ᵕ •｡`)",
+  "(´｡• ᵕ •｡\`)",
   "ヽ(>∀<☆)ノ",
   "ヽ(\*・ω・)ﾉ",
   "☆ ～('▽^人)",
@@ -78,7 +78,7 @@ const faces = [
   "( ´ ▽ \` ).｡ｏ♡",
   "╰(\*´︶`\*)╯♡",
   "ヽ(♡‿♡)ノ",
-  "( ´ ∀ `)ノ～ ♡",
+  "( ´ ∀ \`)ノ～ ♡",
   "♡ ～('▽^人)",
   "( ´ ▽ \` ).｡ｏ♡",
   "Σ>―(〃°ω°〃)♡→",
@@ -94,10 +94,10 @@ const faces = [
   "ヽ(=^･ω･^=)丿",
   "ʚ(\*´꒳\`\*)ɞ",
   "(´♡ω♡\`)",
-  "★~(◡﹏◕✿)",
-  "★~(◡ω◕✿)",
-  "★~(◡﹏◡✿)",
-  "★~(◠︿⊙✿)",
+  "★\~(◡﹏◕✿)",
+  "★\~(◡ω◕✿)",
+  "★\~(◡﹏◡✿)",
+  "★\~(◠︿⊙✿)",
   "｡◕ ‿ ◕｡",
   "(◠︿◠✿)"
 ];
@@ -127,7 +127,7 @@ function uwuify(str) {
   str = str.replace(/N([aeiou])/g, "Ny$1");
   str = str.replace(/N([AEIOU])/g, "NY$1");
   str = str.replace(/ove/g, "uv");
-  str = str + "\~\~";
+  str = str + "~~";
   return str;
 }
 
@@ -149,13 +149,18 @@ function statuschange() {
     } --help`
   );
 }
+
+function isFirstletteraLetter(firstletter) {
+  return firstletter.match(/[a-z]/i);
+}
+
 process.on("unhandledRejection", error => {
-  if (error.code !== 50013)
-    console.error("Unhandled promise rejection:", error);
+  console.error("Unhandled promise rejection:", error);
 });
 client.on("ready", () => {
   axios.post(webhook, {
-    content: "Bot has started, with " +
+    content:
+      "Bot has started, with " +
       client.users.size +
       " users, in " +
       client.channels.size +
@@ -170,7 +175,8 @@ client.on("ready", () => {
 });
 client.on("guildCreate", guild => {
   axios.post(webhook, {
-    content: ":green_square: New guild joined: " +
+    content:
+      ":green_square: New guild joined: " +
       guild.name +
       " (id: " +
       guild.id +
@@ -184,7 +190,8 @@ client.on("guildCreate", guild => {
 });
 client.on("guildDelete", guild => {
   axios.post(webhook, {
-    content: ":red_square: I have been removed from: " +
+    content:
+      ":red_square: I have been removed from: " +
       guild.name +
       " (id: " +
       guild.id +
@@ -197,28 +204,30 @@ client.on("message", async message => {
   const errored = error => {
     if (error.code == 50013)
       message.channel
-      .send(
-        ":x: Oh no qwq! I don't have proper permissions to send you the content! Please make sure I have permissions to **Embed Links** in this server."
-      )
-      .catch(oof => {
-        message.author
-          .send(
-            ":x: Oh no qwq! I don't have proper permissions to send you the content! Please make sure I have permissions to **Send Messages** in that server."
-          )
-          .catch(err2 => {
-            if (err2.code == 50007) {
-              axios.post(webhook, {
-                content: ":x: I tried sending an error DM to " +
-                  message.author.tag +
-                  ", but they have their DMs closed :|"
-              });
-            }
-          });
-      });
+        .send(
+          ":x: Oh no qwq! I don't have proper permissions to send you the content! Please make sure I have permissions to **Embed Links** in this server."
+        )
+        .catch(oof => {
+          message.author
+            .send(
+              ":x: Oh no qwq! I don't have proper permissions to send you the content! Please make sure I have permissions to **Send Messages** in that server."
+            )
+            .catch(err2 => {
+              if (err2.code == 50007) {
+                axios.post(webhook, {
+                  content:
+                    ":x: I tried sending an error DM to " +
+                    message.author.tag +
+                    ", but they have their DMs closed :|"
+                });
+              }
+            });
+        });
     else {
       const errorid = makeid(6);
       axios.post(errorwebhook, {
-        content: "`" +
+        content:
+          "`" +
           errorid +
           "` - " +
           message.author.tag +
@@ -231,13 +240,14 @@ client.on("message", async message => {
       message.author
         .send(
           "Hi there! Something went wrong while executing your command. If you need more help, you can join my support server @ <https://discord.gg/eq6kwNJ> and give this code for error troubleshooting: `" +
-          errorid +
-          "`"
+            errorid +
+            "`"
         )
         .catch(err2 => {
           if (err2.code == 50007) {
             axios.post(errorwebhook, {
-              content: ":x: I tried sending a DM to " +
+              content:
+                ":x: I tried sending a DM to " +
                 message.author.tag +
                 "about the error `" +
                 errorid +
@@ -247,61 +257,69 @@ client.on("message", async message => {
         });
     }
   };
-    if (message.isMentioned(client.user)) {
-      const messagebutstring = message.content;
-      if (
-        messagebutstring.startsWith("<@!" + client.user.id + ">") ||
-        messagebutstring.startsWith("<@" + client.user.id + ">")
-      ) {
-        var args = message.content
-          .slice(22)
-          .trim()
-          .split(/ +/g);
-        var command = args.shift();
-        var str = command + " " + args.join(" ");
-        axios.post(webhook, {
-          content: ":robot: Command ran by " +
-            message.author.username +
-            "#" +
-            message.author.discriminator +
-            " (ID: `" +
-            message.author.id +
-            "`) in " +
-            message.guild.name +
-            " (Guild ID: `" +
-            message.guild.id +
-            "`): " +
-            str
-        });
-        /*if (talkedRecently.has(message.author.id)) {
-            message.channel.send("Wait 2 seconds before getting typing this again. - " + message.author);
-        } else {
-            talkedRecently.add(message.author.id);
-            setTimeout(() => {
-            talkedRecently.delete(message.author.id);
-          }, 2000);*/
+  if (message.isMentioned(client.user)) {
+    const messagebutstring = message.content;
+    if (
+      messagebutstring.startsWith("<@!" + client.user.id + ">") ||
+      messagebutstring.startsWith("<@" + client.user.id + ">")
+    ) {
+      var args = message.content
+        .slice(22)
+        .trim()
+        .split(/ +/g);
+      var command = args.shift();
+      var str = command + " " + args.join(" ");
+      axios.post(webhook, {
+        content:
+          ":robot: Command ran by " +
+          message.author.username +
+          "#" +
+          message.author.discriminator +
+          " (ID: `" +
+          message.author.id +
+          "`) in " +
+          message.guild.name +
+          " (Guild ID: `" +
+          message.guild.id +
+          "`): " +
+          str
+      });
+      if (talkedRecently.has(message.author.id)) {
+        message.channel.send(
+          "Wait 2 seconds before getting typing this again. - " + message.author
+        );
+      } else {
         if (command == "" || command == " ") {
           message.channel
             .send(
               "Hewwo <@" +
-              message.author.id +
-              ">! (^w^)/\n\nI'm **" +
-              client.user.username +
-              "**, I uwu-ify messages. If you want to check how to use me, use **<@!" +
-              client.user.id +
-              "> --help** command :3"
+                message.author.id +
+                ">! (^w^)/\n\nI'm **" +
+                client.user.username +
+                "**, I uwu-ify messages. If you want to check how to use me, use **<@!" +
+                client.user.id +
+                "> --help** command :3"
             )
             .catch(error => errored(error));
+
+          talkedRecently.add(message.author.id);
+          setTimeout(() => {
+            talkedRecently.delete(message.author.id);
+          }, 2000);
         } else if (command === "--ping") {
           const m = await message.channel
             .send("Ping?")
             .catch(error => errored(error));
           m.edit(
             `Pong! Latency is ${m.createdTimestamp -
-            message.createdTimestamp}ms. API Latency is ${Math.round(
-            client.ping
-          )}ms`
+              message.createdTimestamp}ms. API Latency is ${Math.round(
+              client.ping
+            )}ms`
           ).catch(error => errored(error));
+          talkedRecently.add(message.author.id);
+          setTimeout(() => {
+            talkedRecently.delete(message.author.id);
+          }, 2000);
         } else if (command === "--shutdown") {
           let isBotOwner = message.author.id == developer;
           if (!isBotOwner) {
@@ -339,7 +357,8 @@ client.on("message", async message => {
         } else if (command === "--help") {
           let helpembed = new Discord.RichEmbed({
             title: "**Hewwo! I'm uwutranslator!**",
-            description: "I uwu-ify messages. @mention me and type any text for me to translate! >wO\n\nExample: **@uwutranslator Hello world! I am alive!**\n"
+            description:
+              "I uwu-ify messages. @mention me and type any text for me to translate! >wO\n\nExample: **@uwutranslator Hello world! I am alive!**\n"
           });
           helpembed.setFooter(
             message.author.displayAvatarURL,
@@ -354,7 +373,7 @@ client.on("message", async message => {
             "[Click here](https://discordapp.com/oauth2/authorize?client_id=635507578008240165&permissions=84992&scope=bot)",
             true
           );
-          helpembed.addField("Special thanks", "Tea, Dragonic, Pretzel", true);
+          helpembed.addField("Special thanks", "Tea, Elias, Dragonic, Pretzel", true);
           helpembed.addField(
             "Website",
             "[Click here](https://uwutranslator.ghostwolf.me)",
@@ -374,44 +393,57 @@ client.on("message", async message => {
           helpembed.setTimestamp(message.createdAt);
           helpembed.setFooter(
             "Requested by " +
-            message.author.username +
-            "#" +
-            message.author.discriminator,
+              message.author.username +
+              "#" +
+              message.author.discriminator,
             message.author.avatarURL
           );
           message.channel.send(helpembed).catch(error => errored(error));
-        } else if (str.includes("discord.gg") || str.includes("discordapp.com/invite")) {
+          talkedRecently.add(message.author.id);
+          setTimeout(() => {
+            talkedRecently.delete(message.author.id);
+          }, 2000);
+        } else if (
+          str.includes("discord.gg") ||
+          str.includes("discordapp.com/invite")
+        ) {
           message
             .reply("don't send invite links using me >:(")
             .catch(error => errored(error));
         } else {
-          if (str.slice(-1) == " ")
-            str = str.substring(0, str.length - 1);
+          if (str.slice(-1) == " ") str = str.substring(0, str.length - 1);
           var uwuifiedstr = uwuify(str);
           var firstletter = uwuifiedstr.substring(0, 1);
+
           uwuifiedstr =
-            firstletter +
-            "-" +
             uwuifiedstr +
             " " +
-            faces[Math.floor(Math.random() * faces.length)] +
-            " ";
+            faces[Math.floor(Math.random() * faces.length)];
+          if (isFirstletteraLetter(firstletter) !== null) {
+            uwuifiedstr = firstletter + "-" + uwuifiedstr;
+          }
           let uwuembed = new Discord.RichEmbed({
             description: uwuifiedstr
           });
           uwuembed.setColor(16761576);
           uwuembed.setFooter(
             "Requested by " +
-            message.author.tag +
-            " | @mention me to uwu-ify messages",
+              message.author.tag +
+              " | @mention me to uwu-ify messages",
             message.author.avatarURL
           );
           message.channel.send(uwuembed).catch(error => errored(error));
+          talkedRecently.add(message.author.id);
+          setTimeout(() => {
+            talkedRecently.delete(message.author.id);
+          }, 2000);
         }
       }
     }
+  }
 });
 client.login(token);
+
 const DBL = require("dblapi.js");
 const dbl = new DBL(dbltoken, client);
 // Optional events

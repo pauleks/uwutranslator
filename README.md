@@ -1,10 +1,10 @@
 <div align="center">
   <a href="https://uwutranslator.ghostwolf.me">
-    <img src="https://media.discordapp.net/attachments/676016325969182740/677163027669450773/uwu_translator.png">
+    <img src="https://i.imgur.com/3xmnlVK.png">
   </a>
 
 <a href="https://discord.gg/7vhD4KB">![Discord](https://img.shields.io/discord/661993788616474628?label=Join%20us%20on%20Discord&logo=discord&logoColor=ffffff)</a>
-![servers-badge]
+<a href="https://top.gg/bot/635507578008240165">![servers-badge]</a>
 
 <strong><a href="https://discordapp.com/oauth2/authorize?client_id=635507578008240165&permissions=84992&scope=bot">CLICK HERE TO ADD UWUTRANSLATOR TO YOUR SERVER</a></strong>
 </div>
@@ -30,7 +30,7 @@ uwutranslator has a few commands, which are listed below:
 - `--help` - displays the help message
 - `--ping` - measures the time how long does it take for the bot to interact with Discord
 - `--eval` - evals the provided message
-> ⚠ **This command can be accessed by the `developer` only**
+> ⚠ **`eval` command can be accessed by the `developer` only**
 
 If the bot is mentioned and no other arguments are provided, the bot will reply to user with this message:
 > Hewwo **[user]**! (^w^)/
