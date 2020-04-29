@@ -2,3 +2,4 @@
 node_modules
 # Ignore environment variables
 .env
+.data/datafile

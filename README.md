@@ -30,7 +30,8 @@ uwutranslator has a few commands, which are listed below:
 - `--help` - displays the help message
 - `--ping` - measures the time how long does it take for the bot to interact with Discord
 - `--eval` - evals the provided message
-> ⚠ **`eval` command can be accessed by the `developer` only**
+- `--shutdown` - completely shutdowns the bot
+> ⚠ **`eval` and `shutdown` commands can be accessed by the `developer` only**
 
 If the bot is mentioned and no other arguments are provided, the bot will reply to user with this message:
 > Hewwo **[user]**! (^w^)/
@@ -46,8 +47,41 @@ Contributions are welcomed. Please remember, that the main purpose of this bot i
 
 <h2 align="center">Self-hosting</h2>
 
-You are allowed to self-host the bot, but remember to accommodate with the license.  
-If you want to self-host, you have to rename the **.env.example** to **.env** and put in the required credentials.
+### You are allowed to self-host the bot, but remember to accommodate with the license. 
+
+#### Step 0
+[Download and install Node.js to your machine if you haven't done it yet](https://nodejs.org/en/download/). To check the version of Node.js, run:
+```
+$ node -v
+```
+This should output the version you're currently using, for example:
+```
+v12.16.1
+```
+
+#### Step 1
+Navigate to the bot's folder and install the required dependencies:
+```
+$ npm i
+```
+
+#### Step 2
+Modify `.env.example` - add required values where needed:
+- `TOKEN` - your bot's token, which can be found in [Discord Developers page](https://discordapp.com/developers)
+- `DEVELOPER` - your user ID
+- `WEBHOOK` - webhook URL of the logging channel in your Discord server for logging bot actions
+- `ERRORWEBHOOK` - webhook URL of the logging channel in your Discord server for logging critical errors
+- `DBLTOKEN` - top.gg token
+
+Rename `.env.example` to `.env` 
+
+#### Step 3:
+Run:
+```
+$ node index.js
+```
+
+If the console shows "Logged in as..." - congratulations! The bot is running. Enjoy! :sparkles:
 
 <h2 align="center">License</h2>
 
