@@ -115,6 +115,77 @@ client.on("message", async message => {
             message.channel.send(
                 "Wait 5 seconds before using me again. - " + message.author
             );
+            return;
+          }
+          try {
+            const code = args.join(" ");
+            let evaled = eval(code);
+            if (typeof evaled !== "string")
+              evaled = require("util").inspect(evaled);
+            message.channel
+              .send(clean(evaled), {
+                code: "xl"
+              })
+              .catch(error => errored(error));
+          } catch (err) {
+            message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
+          }
+        } else if (command === "--help") {
+          let helpembed = new Discord.RichEmbed({
+            title: "**Hewwo! I'm uwutranslator!**",
+            description:
+              "I uwu-ify messages. @mention me and type any text for me to translate! >wO\n\nExample: **@uwutranslator Hello world! I am alive!**\n"
+          });
+          helpembed.setFooter(
+            message.author.displayAvatarURL,
+            message.author.username + "#" + message.author.discriminator
+          );
+          helpembed.setThumbnail(
+            "https://media.giphy.com/media/VUC9YdLSnKuJy/giphy.gif"
+          );
+          helpembed.addField("Developer", "Ghostwolf#6735", true);
+          helpembed.addField(
+            "Add me to your server!",
+            "[Click here](https://discordapp.com/oauth2/authorize?client_id=635507578008240165&permissions=84992&scope=bot)",
+            true
+          );
+          helpembed.addField("Special thanks", "Tea, Elias, Dragonic, Pretzel", true);
+          helpembed.addField(
+            "Website",
+            "[Click here](https://uwutranslator.ghostwolf.me)",
+            true
+          );
+          helpembed.addField(
+            "Support the developer!",
+            "[Buy me a coffee!](https://ko-fi.com/ghostwolf)",
+            true
+          );
+          helpembed.addField(
+            "Vote for me on DBL!",
+            "[Click here](https://top.gg/bot/635507578008240165/vote)",
+            true
+          );
+          helpembed.setColor(16761576);
+          helpembed.setTimestamp(message.createdAt);
+          helpembed.setFooter(
+            "Requested by " +
+              message.author.username +
+              "#" +
+              message.author.discriminator,
+            message.author.avatarURL
+          );
+          message.channel.send(helpembed).catch(error => errored(error));
+          talkedRecently.add(message.author.id);
+          setTimeout(() => {
+            talkedRecently.delete(message.author.id);
+          }, 5000);
+        } else if (
+          str.includes("discord.gg") ||
+          str.includes("discordapp.com/invite")
+        ) {
+          message
+            .reply("don't send invite links using me >:(")
+            .catch(error => errored(error));
         } else {
             talkedRecently.add(message.author.id);
             setTimeout(() => {
