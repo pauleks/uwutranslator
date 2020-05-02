@@ -141,7 +141,7 @@ client.on("message", async message => {
       message.react("🚫");
       message.author.send("🚫 You have been blacklisted from using the bot for not following our Terms of Service. If you would like to appeal, please join our server @ <https://discord.gg/eq6kwNJ> and head over to #support to appeal.\n\nYou can find our Terms of Service here: https://github.com/TheOnlyGhostwolf/uwutranslator/wiki/Terms-of-Service");
       return;
-    } else {
+    }
     console.log("Continuing to execute stuff");
     var args = message.content.slice(22).trim().split(/ +/g);
     var command = args.shift();
@@ -272,7 +272,7 @@ client.on("message", async message => {
       }
     }
   }
-}});
+});
 client.login(token);
 /*
 // REMOVE THIS IF YOUR BOT ISN'T LISTED ON TOP.GG
