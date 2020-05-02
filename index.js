@@ -79,16 +79,19 @@ function errored(error, message) {
 async function isBlacklisted(message) {
   await blacklist.find({
     userid: message.author.id
-  }, function(err, result) {
+  }, await function(err, result) {
     if (result[0] != undefined) {
-      message.react("🚫");
-      message.author.send("🚫 You have been blacklisted from using the bot for not following out Terms of Service. If you would like to appeal, please join our server @ <https://discord.gg/eq6kwNJ> and head ovet to #support to appeal.\n\nYou can find our Terms of Service here: https://github.com/TheOnlyGhostwolf/uwutranslator/wiki/Terms-of-Service");
+      console.log("Found the user in the database");
       return true;
     }
     if (err) {
       console.log("Couldn't check if the user is blacklisted: " + err)
       return false;
-    };
+    }
+    else {
+      console.log("Couldn't find the user in the blacklist");
+      return false;
+    }
   });
 }
 
@@ -134,8 +137,12 @@ client.on("message", async message => {
   const messagebutstring = message.content;
   if (messagebutstring.startsWith("<@!" + client.user.id + ">") || messagebutstring.startsWith("<@" + client.user.id + ">")) {
     if (isBlacklisted(message) == true) {
+      console.log("Responding with the blacklist message");
+      message.react("🚫");
+      message.author.send("🚫 You have been blacklisted from using the bot for not following our Terms of Service. If you would like to appeal, please join our server @ <https://discord.gg/eq6kwNJ> and head over to #support to appeal.\n\nYou can find our Terms of Service here: https://github.com/TheOnlyGhostwolf/uwutranslator/wiki/Terms-of-Service");
       return;
-    };
+    } else {
+    console.log("Continuing to execute stuff");
     var args = message.content.slice(22).trim().split(/ +/g);
     var command = args.shift();
     var str = command + " " + args.join(" ");
@@ -265,7 +272,7 @@ client.on("message", async message => {
       }
     }
   }
-});
+}});
 client.login(token);
 /*
 // REMOVE THIS IF YOUR BOT ISN'T LISTED ON TOP.GG
