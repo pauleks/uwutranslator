@@ -23,13 +23,15 @@ const webhook = process.env.WEBHOOK;
 const errorwebhook = process.env.ERRORWEBHOOK;
 const dbltoken = process.env.DBLTOKEN;
 const developer = process.env.DEVELOPER;
-console.log(token);
+var message_global;
+
 const client = new Discord.Client();
 const talkedRecently = new Set();
 
 var misc = require('./commands.js');
 var data = require('./data.js');
 var uwuifying = require('./uwuify.js');
+var errors = require('./error.js');
 
 var Datastore = require("nedb"),
   blacklist = new Datastore({
@@ -37,18 +39,14 @@ var Datastore = require("nedb"),
     autoload: true
   });
 
-const clean = text => {
-  if (typeof text === "string") return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-  else return text;
-};
-
-function statuschange() {
+/*function statuschange() {
   client.user.setActivity(`${statuses[Math.floor(Math.random() * statuses.length)]} | @${
       client.user.username
     } --help`);
-}
+}*/
 process.on("unhandledRejection", error => {
   console.error("Unhandled promise rejection:", error);
+  errors.function(message_global, error, axios, webhook, errorwebhook);
 });
 
 client.on("ready", () => {
@@ -56,8 +54,7 @@ client.on("ready", () => {
     content: "Logged in as " + client.user.tag + ". I can see " + client.users.cache.size + " users, in " + client.channels.cache.size + " channels of " + client.guilds.cache.size + " guilds."
   });
   console.log(`Logged in as ${client.user.tag}. I can see ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
-  setInterval(statuschange, 120000);
-  console.log(misc)
+  //setInterval(statuschange, 120000);
 });
 client.on("guildCreate", guild => {
   axios.post(webhook, {
@@ -71,10 +68,11 @@ client.on("guildDelete", guild => {
   });
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 });
-client.on("message", message => {
+client.on("message", async message => {
+  message_global = message;
   if (message.author.bot || message.channel.type != "text") return;
-  const messagebutstring = message.content;
-  if (messagebutstring.startsWith("<@!" + client.user.id + ">") || messagebutstring.startsWith("<@" + client.user.id + ">")) {
+  let isPrefix = message.content;
+  if (isPrefix.startsWith("<@!" + client.user.id + ">") || isPrefix.startsWith("<@" + client.user.id + ">")) {
     var isBlacklisted;
     blacklist.find({
      userid: message.author.id
@@ -91,20 +89,24 @@ client.on("message", message => {
           isBlacklisted = false;
         }
     });
-  };
+
     if (isBlacklisted == true) {
       console.log("Responding with the blacklist message");
       message.react("🚫");
       message.author.send("🚫 You have been blacklisted from using the bot for not following our Terms of Service. If you would like to appeal, please join our server @ <https://discord.gg/eq6kwNJ> and head over to #support to appeal.\n\nYou can find our Terms of Service here: https://github.com/TheOnlyGhostwolf/uwutranslator/wiki/Terms-of-Service");
       return;
     }
+
     console.log("Continuing to execute stuff");
+
     var args = message.content.slice(22).trim().split(/ +/g);
     var command = args.shift();
     var str = command + " " + args.join(" ");
+
     axios.post(webhook, {
       content: ":robot: Command ran by " + message.author.username + "#" + message.author.discriminator + " (ID: `" + message.author.id + "`) in " + message.guild.name + " (Guild ID: `" + message.guild.id + "`): " + str
     });
+
     if (talkedRecently.has(message.author.id)) {
       message.react('⏱️');
       return;
@@ -114,31 +116,27 @@ client.on("message", message => {
         talkedRecently.delete(message.author.id);
       }, 3000);
       if (command == "" || command == " ") {
-        message.channel.send("Hewwo <@" + message.author.id + ">! (^w^)/\n\nI'm **" + client.user.username + "**, I uwu-ify messages. If you want to check how to use me, use **<@!" + client.user.id + "> --help** command :3").catch(error => errored(error, message));
+        message.channel.send("Hewwo <@" + message.author.id + ">! (^w^)/\n\nI'm **" + client.user.username + "**, I uwu-ify messages. If you want to check how to use me, use **<@!" + client.user.id + "> --help** command :3");
       } else if (command === "--ping") {
-        misc.commands.ping(message);
+        misc.ping(message, client);
         console.log("LEt's fucking do it");
       } else if (command === "--shutdown") {
-        misc.commands.shutdown(message, developer);
+        misc.shutdown(message, developer, client, process);
       } else if (command == "--blacklist") {
-        misc.commands.eval(message, developer);
+        misc.blacklist(message, developer, args, blacklist);
       } else if (command === "--eval") {
-        misc.commands.blacklist(message, developer);
+        misc.eval(message, developer, args);
       } else if (command === "--help") {
-        misc.commands.help(message);
+        misc.help(message, Discord, client);
       } else if (str.includes("discord.gg") || str.includes("discordapp.com/invite")) {
-        message.reply("don't send invite links using me >:(").catch(error => errored(error, message));
+        message.reply("don't send invite links using me >:(");
       } else {
-        uwuifying.uwuify.custom(message);
+        uwuifying.custom(str, message, data, Discord);
       }
     }
   }
-);
+});
 client.login(token);
-
-module.exports.commands = misc;
-module.exports.uwuify = uwuifying;
-module.exports.data = data;
 
 /*
 // REMOVE THIS IF YOUR BOT ISN'T LISTED ON TOP.GG
