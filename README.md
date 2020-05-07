@@ -29,9 +29,8 @@ One of the most important features of uwutranslator is that it doesn't have any 
 uwutranslator has a few commands, which are listed below:
 - `--help` - displays the help message
 - `--ping` - measures the time how long does it take for the bot to interact with Discord
-- `--eval` - evals the provided message
-- `--shutdown` - completely shutdowns the bot
-> ⚠ **`eval` and `shutdown` commands can be accessed by the `developer` only**
+- `--eval` - evals the provided message ![dev-only-badge]
+- `--shutdown` - completely shutdowns the bot ![dev-only-badge]
 
 If the bot is mentioned and no other arguments are provided, the bot will reply to user with this message:
 > Hewwo **[user]**! (^w^)/
@@ -88,3 +87,4 @@ If the console shows "Logged in as..." - congratulations! The bot is running. En
 [Licensed under GNU General Public License v3.0](https://github.com/TheOnlyGhostwolf/uwutranslator/blob/master/LICENSE)
 
 [servers-badge]: https://top.gg/api/widget/servers/635507578008240165.svg?noavatar=true&leftcolor=FFC2E8&lefttextcolor=ffffff&rightcolor=000000&righttextcolor=ffffff
+[dev-only-badge]: https://img.shields.io/badge/DEVELOPER-only-f00.svg?longCache=true&style=flat-square

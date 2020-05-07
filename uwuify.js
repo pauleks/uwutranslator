@@ -1,9 +1,13 @@
 var uwuify = {
     custom: function(str, message, data, Discord) {
-        console.log(data.faces);
-        var faces_array = Object.values(data);
-        console.log(faces_array[0]);
+        var datavar = Object.values(data);
         if (str.slice(-1) == " ") str = str.substring(0, str.length - 1);
+        
+        for (var loop = 0; loop < datavar[2].length; loop++) {
+            for (var j = 0; j < datavar[2][loop][0].length; j++) {
+                str = str.replace(datavar[2][loop][0][j], datavar[2][loop][1][Math.floor(Math.random() * datavar[2][loop][1].length)]);
+            }
+        }
 
         str = str.replace(/(?:r|l)/g, "w");
         str = str.replace(/(?:R|L)/g, "W");
@@ -13,8 +17,8 @@ var uwuify = {
         str = str.replace(/ove/g, "uv");
         str = str + "\~\~";
 
-        var firstletter = str.substring(0, 1);
-        var uwuifiedstr = firstletter + "-" + str + " " + faces_array[0][Math.floor(Math.random() * faces_array[0].length)];
+        //var firstletter = str.substring(0, 1);
+        var uwuifiedstr = str;
 
         let uwuembed = new Discord.MessageEmbed({
             description: uwuifiedstr

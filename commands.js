@@ -1,7 +1,4 @@
 var commands = {
-    hello: function() {
-        console.log("Hi");
-    },
     ping: async function(message, client) {
     	console.log("Fuck yeah I'm here");
         const m = await message.channel.send("Ping?");

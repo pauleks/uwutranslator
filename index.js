@@ -39,11 +39,14 @@ var Datastore = require("nedb"),
     autoload: true
   });
 
-/*function statuschange() {
-  client.user.setActivity(`${statuses[Math.floor(Math.random() * statuses.length)]} | @${
+console.log("\n██╗░░░██╗░██╗░░░░░░░██╗██╗░░░██╗████████╗██████╗░░█████╗░███╗░░██╗░██████╗██╗░░░░░░█████╗░████████╗░█████╗░██████╗░\n██║░░░██║░██║░░██╗░░██║██║░░░██║╚══██╔══╝██╔══██╗██╔══██╗████╗░██║██╔════╝██║░░░░░██╔══██╗╚══██╔══╝██╔══██╗██╔══██╗\n██║░░░██║░╚██╗████╗██╔╝██║░░░██║░░░██║░░░██████╔╝███████║██╔██╗██║╚█████╗░██║░░░░░███████║░░░██║░░░██║░░██║██████╔╝\n██║░░░██║░░████╔═████║░██║░░░██║░░░██║░░░██╔══██╗██╔══██║██║╚████║░╚═══██╗██║░░░░░██╔══██║░░░██║░░░██║░░██║██╔══██╗\n╚██████╔╝░░╚██╔╝░╚██╔╝░╚██████╔╝░░░██║░░░██║░░██║██║░░██║██║░╚███║██████╔╝███████╗██║░░██║░░░██║░░░╚█████╔╝██║░░██║\n░╚═════╝░░░░╚═╝░░░╚═╝░░░╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═════╝░╚══════╝╚═╝░░╚═╝░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝\n");
+
+function statuschange() {
+  client.user.setActivity(`${data.statuses[Math.floor(Math.random() * data.statuses.length)]} | @${
       client.user.username
     } --help`);
-}*/
+}
+
 process.on("unhandledRejection", error => {
   console.error("Unhandled promise rejection:", error);
   errors.function(message_global, error, axios, webhook, errorwebhook);
@@ -54,7 +57,7 @@ client.on("ready", () => {
     content: "Logged in as " + client.user.tag + ". I can see " + client.users.cache.size + " users, in " + client.channels.cache.size + " channels of " + client.guilds.cache.size + " guilds."
   });
   console.log(`Logged in as ${client.user.tag}. I can see ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
-  //setInterval(statuschange, 120000);
+  setInterval(statuschange, 15000);
 });
 client.on("guildCreate", guild => {
   axios.post(webhook, {
@@ -119,7 +122,6 @@ client.on("message", async message => {
         message.channel.send("Hewwo <@" + message.author.id + ">! (^w^)/\n\nI'm **" + client.user.username + "**, I uwu-ify messages. If you want to check how to use me, use **<@!" + client.user.id + "> --help** command :3");
       } else if (command === "--ping") {
         misc.ping(message, client);
-        console.log("LEt's fucking do it");
       } else if (command === "--shutdown") {
         misc.shutdown(message, developer, client, process);
       } else if (command == "--blacklist") {
