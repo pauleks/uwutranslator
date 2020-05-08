@@ -41,7 +41,7 @@ If the bot is mentioned and any other arguments are provided which are not liste
 
 <h2 align="center">Contributing</h2>
 
-Contributions are welcomed, especially for 
+Contributions are welcomed. However, open the issue first to discuss new features (not needed for bug fixes and code optimizations).
 
 
 <h2 align="center">Self-hosting</h2>
