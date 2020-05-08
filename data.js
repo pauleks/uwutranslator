@@ -3,8 +3,7 @@ const data = {
 
 	// This software uses code from QuazzyWazzy/UwU-fy - see library-license.txt
 	replacements: [
-		[["hello"], "hewwo"],
-		[["cute"], "kawaii"],
+		[["hello", "hi"], "hewwo"],
 		[["god"], "gawd"],
 		[["father"], "daddy"],
 		[["papa"], "papi"],

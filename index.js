@@ -57,7 +57,7 @@ client.on("ready", () => {
     content: "Logged in as " + client.user.tag + ". I can see " + client.users.cache.size + " users, in " + client.channels.cache.size + " channels of " + client.guilds.cache.size + " guilds."
   });
   console.log(`Logged in as ${client.user.tag}. I can see ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
-  setInterval(statuschange, 15000);
+  setInterval(statuschange, 120000);
 });
 client.on("guildCreate", guild => {
   axios.post(webhook, {
@@ -76,6 +76,8 @@ client.on("message", async message => {
   if (message.author.bot || message.channel.type != "text") return;
   let isPrefix = message.content;
   if (isPrefix.startsWith("<@!" + client.user.id + ">") || isPrefix.startsWith("<@" + client.user.id + ">")) {
+
+    /* TO-DO: fix this thing - https://github.com/TheOnlyGhostwolf/uwutranslator/issues/12
     var isBlacklisted;
     blacklist.find({
      userid: message.author.id
@@ -100,7 +102,7 @@ client.on("message", async message => {
       return;
     }
 
-    console.log("Continuing to execute stuff");
+    console.log("Continuing to execute stuff");*/
 
     var args = message.content.slice(22).trim().split(/ +/g);
     var command = args.shift();
@@ -140,7 +142,6 @@ client.on("message", async message => {
 });
 client.login(token);
 
-/*
 // REMOVE THIS IF YOUR BOT ISN'T LISTED ON TOP.GG
 const DBL = require("dblapi.js");
 const dbl = new DBL(dbltoken, client);
@@ -157,4 +158,4 @@ dbl.on('error', e => {
       content: ":fire: Something went wrong while trying to post server count to DBL: " + e
     }
   );
-})*/
+})

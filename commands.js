@@ -1,6 +1,5 @@
 var commands = {
     ping: async function(message, client) {
-    	console.log("Fuck yeah I'm here");
         const m = await message.channel.send("Ping?");
         m.edit(`Pong! Latency is ${m.createdTimestamp -
             message.createdTimestamp}ms. API Latency is ${Math.round(
