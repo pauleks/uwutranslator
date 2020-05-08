@@ -41,7 +41,7 @@ If the bot is mentioned and any other arguments are provided which are not liste
 
 <h2 align="center">Contributing</h2>
 
-Contributions are welcomed. Please remember, that the main purpose of this bot is to translate the messages - do not add any more commands which wouldn't fit the purpose of "translating". However, commands which provide more information about the bot, like `--help`, `--ping`, etc. are fine, as well as cases how to uwu-ify the message.
+Contributions are welcomed, especially for 
 
 
 <h2 align="center">Self-hosting</h2>

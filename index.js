@@ -28,16 +28,16 @@ var message_global;
 const client = new Discord.Client();
 const talkedRecently = new Set();
 
-var misc = require('./commands.js');
-var data = require('./data.js');
-var uwuifying = require('./uwuify.js');
-var errors = require('./error.js');
+var misc = require('./cmds/commands.js');
+var data = require('./cmds/data.js');
+var uwuifying = require('./cmds/uwuify.js');
+var errors = require('./cmds/error.js');
 
-var Datastore = require("nedb"),
+/*var Datastore = require("nedb"),
   blacklist = new Datastore({
     filename: ".data/datafile",
     autoload: true
-  });
+  });*/
 
 console.log("\n██╗░░░██╗░██╗░░░░░░░██╗██╗░░░██╗████████╗██████╗░░█████╗░███╗░░██╗░██████╗██╗░░░░░░█████╗░████████╗░█████╗░██████╗░\n██║░░░██║░██║░░██╗░░██║██║░░░██║╚══██╔══╝██╔══██╗██╔══██╗████╗░██║██╔════╝██║░░░░░██╔══██╗╚══██╔══╝██╔══██╗██╔══██╗\n██║░░░██║░╚██╗████╗██╔╝██║░░░██║░░░██║░░░██████╔╝███████║██╔██╗██║╚█████╗░██║░░░░░███████║░░░██║░░░██║░░██║██████╔╝\n██║░░░██║░░████╔═████║░██║░░░██║░░░██║░░░██╔══██╗██╔══██║██║╚████║░╚═══██╗██║░░░░░██╔══██║░░░██║░░░██║░░██║██╔══██╗\n╚██████╔╝░░╚██╔╝░╚██╔╝░╚██████╔╝░░░██║░░░██║░░██║██║░░██║██║░╚███║██████╔╝███████╗██║░░██║░░░██║░░░╚█████╔╝██║░░██║\n░╚═════╝░░░░╚═╝░░░╚═╝░░░╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═════╝░╚══════╝╚═╝░░╚═╝░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝\n");
 
