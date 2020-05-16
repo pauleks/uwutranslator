@@ -129,7 +129,7 @@ client.on("message", async message => {
       } else if (command == "--blacklist") {
         misc.blacklist(message, developer, args, blacklist);
       } else if (command === "--eval") {
-        misc.eval(message, developer, args);
+        misc.eval(message, developer, args, process, client);
       } else if (command === "--help") {
         misc.help(message, Discord, client);
       } else if (str.includes("discord.gg") || str.includes("discordapp.com/invite")) {

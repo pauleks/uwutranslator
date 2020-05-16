@@ -65,7 +65,7 @@ var commands = {
             }
         })
     },
-    eval: function(message, developer, args) {
+    eval: function(message, developer, args, process, client) {
         let isBotOwner = message.author.id == developer;
         if (!isBotOwner) {
             message.channel.send(":warning: Only the bot developer can use this command");
