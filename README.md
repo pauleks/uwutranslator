@@ -3,11 +3,7 @@
     <img src="https://i.imgur.com/FspqOKi.png">
   </a>
 
-<a href="https://discord.gg/7vhD4KB">![Discord](https://img.shields.io/discord/661993788616474628?label=Join%20us%20on%20Discord&logo=discord&logoColor=ffffff)</a>
-<a href="https://top.gg/bot/635507578008240165">![servers-badge]</a>
-
-<strong><a href="https://discordapp.com/oauth2/authorize?client_id=635507578008240165&permissions=84992&scope=bot">CLICK HERE TO ADD UWUTRANSLATOR TO YOUR SERVER</a></strong>
-</div>
+<!--<a href="https://discord.gg/7vhD4KB">![Discord](https://img.shields.io/discord/661993788616474628?label=Join%20us%20on%20Discord&logo=discord&logoColor=ffffff)</a>-->
 
 ---
 
