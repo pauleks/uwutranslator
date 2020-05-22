@@ -1,6 +1,6 @@
 /*
     uwutranslator - Discord bot, which uwu-ifies your messages
-    Copyright (C) 2020 Paulius (Ghostwolf) Gečas
+    Copyright (C) 2020 Paulius Gečas
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
