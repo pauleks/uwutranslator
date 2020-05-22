@@ -4,7 +4,7 @@
   </a>
 
 <!--<a href="https://discord.gg/7vhD4KB">![Discord](https://img.shields.io/discord/661993788616474628?label=Join%20us%20on%20Discord&logo=discord&logoColor=ffffff)</a>-->
-
+</a>
 ---
 
 <h2 align="center">uwutranslator</h2>
