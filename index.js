@@ -97,26 +97,4 @@ client.on("message", async message => {
         }
     }
 });
-<<<<<<< HEAD
 client.login(token);
-=======
-client.login(token);
-
-// REMOVE THIS IF YOUR BOT ISN'T LISTED ON TOP.GG
-const DBL = require("dblapi.js");
-const dbl = new DBL(dbltoken, client);
-dbl.on('posted', () => {
-  axios.post(
-    webhook, {
-      content: ":thumbsup: Just posted my server count to DBL!"
-    }
-  );
-})
-dbl.on('error', e => {
-  axios.post(
-    webhook, {
-      content: ":fire: Something went wrong while trying to post server count to DBL: " + e
-    }
-  );
-})
->>>>>>> a91a556b700c422214856a0d44ca92e519de9b64

@@ -1,11 +1,8 @@
 <div align="center">
     <img src="https://i.imgur.com/FspqOKi.png">
-<<<<<<< HEAD
-  </a>
 
 "It just works" - Ghostwolf
-=======
->>>>>>> a91a556b700c422214856a0d44ca92e519de9b64
+
 </div>
 
 ---
@@ -40,7 +37,7 @@ If the bot is mentioned and any other arguments are provided which are not liste
 
 <h2 align="center">Contributing</h2>
 
-Contributions are welcomed. However, open the issue first to discuss new features (not needed for bug fixes and code optimizations).
+No contributions are welcomed anymore on this repository. You are free to fork this repo and add your own features there.
 
 
 <h2 align="center">Self-hosting</h2>
@@ -65,11 +62,8 @@ $ npm i
 
 #### Step 2
 Modify `.env.example` - add required values where needed:
-- `TOKEN` - your bot's token, which can be found in [Discord Developers page](https://discordapp.com/developers)
+- `TOKEN` - your bot's token, which can be found in [Discord Developers page](https://discord.com/developers)
 - `DEVELOPER` - your user ID
-- `WEBHOOK` - webhook URL of the logging channel in your Discord server for logging bot actions
-- `ERRORWEBHOOK` - webhook URL of the logging channel in your Discord server for logging critical errors
-- `DBLTOKEN` - top.gg token
 
 Rename `.env.example` to `.env` 
 
@@ -85,5 +79,4 @@ If the console shows "Logged in as..." - congratulations! The bot is running. En
 
 [Licensed under GNU General Public License v3.0](https://github.com/TheOnlyGhostwolf/uwutranslator/blob/master/LICENSE)
 
-[servers-badge]: https://top.gg/api/widget/servers/635507578008240165.svg?noavatar=true&leftcolor=FFC2E8&lefttextcolor=ffffff&rightcolor=000000&righttextcolor=ffffff
 [dev-only-badge]: https://img.shields.io/badge/DEVELOPER-only-f00.svg?longCache=true&style=flat-square
