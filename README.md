@@ -1,9 +1,11 @@
 <div align="center">
-  <a href="https://uwutranslator.ghostwolf.me">
     <img src="https://i.imgur.com/FspqOKi.png">
+<<<<<<< HEAD
   </a>
 
 "It just works" - Ghostwolf
+=======
+>>>>>>> a91a556b700c422214856a0d44ca92e519de9b64
 </div>
 
 ---
