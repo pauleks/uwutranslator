@@ -1,29 +1,26 @@
 {
-  "name": "uwutranslator",
-  "version": "2.0.0",
-  "description": "Discord bot, which uwu-ifies your messages",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TheOnlyGhostwolf/uwutranslator.git"
-  },
-  "author": "Paulius Gečas",
-  "license": "GPL-3.0-only",
-  "engine": ">=13.2",
-  "engineStrict": true,
-  "bugs": {
-    "url": "https://github.com/TheOnlyGhostwolf/uwutranslator/issues"
-  },
-  "homepage": "https://github.com/TheOnlyGhostwolf/uwutranslator#readme",
-  "dependencies": {
-    "axios": "^0.19.2",
-    "dblapi.js": "^2.3.0",
-    "discord.js": "12.1.1",
-    "dotenv": "8.2.0",
-    "nedb": "1.8.0"
-  }
+    "name": "uwutranslator",
+    "version": "2.0.0",
+    "description": "Discord bot, which uwu-ifies your messages",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TheOnlyGhostwolf/uwutranslator.git"
+    },
+    "author": "Paulius (Ghostwolf) Gečas",
+    "license": "GPL-3.0-only",
+    "engine": ">=13.2",
+    "engineStrict": true,
+    "bugs": {
+        "url": "https://github.com/TheOnlyGhostwolf/uwutranslator/issues"
+    },
+    "homepage": "https://github.com/TheOnlyGhostwolf/uwutranslator",
+    "dependencies": {
+        "discord.js": "12.1.1",
+        "dotenv": "8.2.0"
+    }
 }

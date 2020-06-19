@@ -3,10 +3,7 @@
     <img src="https://i.imgur.com/FspqOKi.png">
   </a>
 
-<a href="https://discord.gg/7vhD4KB">![Discord](https://img.shields.io/discord/661993788616474628?label=Join%20us%20on%20Discord&logo=discord&logoColor=ffffff)</a>
-<a href="https://top.gg/bot/635507578008240165">![servers-badge]</a>
-
-<strong><a href="https://discordapp.com/oauth2/authorize?client_id=635507578008240165&permissions=84992&scope=bot">CLICK HERE TO ADD UWUTRANSLATOR TO YOUR SERVER</a></strong>
+"It just works" - Ghostwolf
 </div>
 
 ---
@@ -34,7 +31,7 @@ uwutranslator has a few commands, which are listed below:
 
 If the bot is mentioned and no other arguments are provided, the bot will reply to user with this message:
 > Hewwo **[user]**! (^w^)/
-I'm uwutranslator, I uwu-ify messages. If you want to check how to use me, use `@`uwutranslator --help command :3
+I'm [**bot**], I uwu-ify messages. If you want to check how to use me, use `[bot] --help` command :3
 
 If the bot is mentioned and any other arguments are provided which are not listed here, the bot will "uwu-ify" the message.
 

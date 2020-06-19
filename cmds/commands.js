@@ -12,58 +12,11 @@ var commands = {
             message.channel.send(":warning: Only the bot developer can use this command");
             return;
         }
-        message.channel.send("I-I don't feel so good... qwq | Shutting down...").then(m => {
+        message.channel.send("I-I don't feel so good... qwq (Shutting down...)").then(m => {
+            console.log('\x1b[31m%s\x1b[0m', `The shutdown command was executed by the developer ${message.author.tag}, the bot is shutting down.`)
             client.destroy();
             process.exit(1);
         });
-    },
-    blacklist: function(message, developer, args, blacklist) {
-        let isBotOwner = message.author.id == developer;
-        if (!isBotOwner) {
-            message.channel.send(":warning: Only the bot developer can use this command");
-            return;
-        }
-        blacklist.find({
-            userid: args
-        }, function(err, result) {
-            if (result[0] == undefined) {
-                blacklist.insert({
-                    userid: args
-                }, function(err, userAdded) {
-                    if (err) {
-                        console.log("There's a problem with the database: ", err);
-                        message.channel.send(
-                            ":x: There was an error while trying to add the user to the blacklist. Please try again later."
-                        );
-                    } else if (userAdded) {
-                        console.log(
-                            "New user with ID " + args + " inserted to the blacklist"
-                        );
-                        message.channel.send(
-                            "New user with ID " + args + " inserted to the blacklist"
-                        );
-                    }
-                });
-            } else {
-                blacklist.remove({
-                    userid: args
-                }, {
-                    multi: true
-                }, function(err) {
-                    if (err) {
-                        console.log("There's a problem with the database: ", err);
-                        message.channel.send(
-                            ":x: There was an error while trying to remove the user from the blacklist. Please try again later."
-                        );
-                    } else {
-                        console.log("User " + args + " removed from the blacklist");
-                        message.channel.send(
-                            "User " + args + " removed from the blacklist"
-                        );
-                    }
-                });
-            }
-        })
     },
     eval: function(message, developer, args, process, client) {
         let isBotOwner = message.author.id == developer;
@@ -84,27 +37,25 @@ var commands = {
     },
     help: function(message, Discord, client) {
         var helpembed = new Discord.MessageEmbed({
-                title: "**Hewwo! I'm " + client.user.username + "!**",
-                description: "I uwu-ify messages. @mention me and type any text for me to translate! >wO\n\nExample: **<@" + client.user.id + "> Please forgive me, father, for my sins!**\n"
+                title: `**Hewwo! I'm ${client.user.username}!**`,
+                description: `I uwu-ify messages. @mention me and type any text for me to translate! >wO\n\nExample: **<@${client.user.id}> Please forgive me, father, for my sins!**`
             })
             .setThumbnail("https://media.giphy.com/media/VUC9YdLSnKuJy/giphy.gif")
-            .addField("Developer", "[Ghostwolf#6735](https://ghostwolf.me)", true)
-            .addField("Add me to your server!", "[Click here](https://discordapp.com/oauth2/authorize?client_id=635507578008240165&permissions=84992&scope=bot)", true)
-            .addField("Special thanks", "Tea, Elias, Dragonic, Pretzel", true)
-            .addField("Website", "[Click here](https://uwutranslator.ghostwolf.me)", true)
-            .addField("Support the developer!", "[Buy me a coffee!](https://ko-fi.com/ghostwolf)", true)
-            .addField("Vote for me on DBL!", "[Click here](https://top.gg/bot/635507578008240165/vote)", true)
-            .addField("Legal Mumbo Jumbo", "[Terms of Service](https://github.com/TheOnlyGhostwolf/uwutranslator/wiki/Terms-of-Service) | [Privacy Policy](https://github.com/TheOnlyGhostwolf/uwutranslator/wiki/Privacy-Policy)", true)
+            .addField("Original developer", "[Ghostwolf](https://ghostwolf.me)", true)
+            .addField("Original special thanks", "Tea, Elias, Dragonic, Pretzel - for letting the original uwutranslator to take off!", true)
+            .addField("Support the original developer!", "[Buy me a coffee!](https://ko-fi.com/ghostwolf)", true)
             .setColor(16761576)
             .setTimestamp(message.createdAt)
-            .setFooter("Requested by " + message.author.username + "#" + message.author.discriminator, message.author.avatarURL())
+            .setFooter(`Requested by ${message.author.username}#${message.author.discriminator}`, message.author.avatarURL())
         message.channel.send(helpembed)
     }
 };
 
 module.exports = commands;
 
-const clean = text => {
-  if (typeof text === "string") return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-  else return text;
-};
+function clean(text) {
+    if (typeof text === "string")
+        return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+    else
+        return text;
+}
