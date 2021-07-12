@@ -41,7 +41,7 @@ $ node -v
 ```
 This should output the version you're currently using, for example:
 ```
-v12.16.1
+v14.16.1
 ```
 
 #### Step 2

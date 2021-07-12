@@ -13,7 +13,7 @@
     },
     "author": "Ghostwolf",
     "license": "GPL-3.0-only",
-    "engine": ">=13.2",
+    "engine": ">=14",
     "engineStrict": true,
     "bugs": {
         "url": "https://github.com/TheOnlyGhostwolf/uwutranslator/issues"
