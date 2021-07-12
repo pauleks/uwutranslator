@@ -1,7 +1,7 @@
 <div align="center">
     <img src="https://i.imgur.com/FspqOKi.png">
 
-"I hate this bot" - everyone
+"I hate this" - everyone
 
 [Add uwutranslator to your server](https://discord.com/api/oauth2/authorize?client_id=764520885323300875&scope=applications.commands)
 
@@ -11,7 +11,7 @@
 
 <h2 align="center">uwutranslator</h2>
 
-uwutranslator is an open-source bot, which purpose is to bring more fun to your server by "translating" messages and turning them into so called "uwu styled" messages.
+uwutranslator is a Discord integration, that "uwuifies" your messages.
 
 <h3>Table of Contents</h3>
 
@@ -24,20 +24,17 @@ uwutranslator is an open-source bot, which purpose is to bring more fun to your 
 
 This bot uses slash commands to function! Start typing `/` to see all available commands!
 
-![](https://i.kawaii.sh/cuW6r4~.png)
+!["Slash commands menu"](https://i.kawaii.sh/~1hjdTY.png "Slash commands menu")
 
-![](https://i.kawaii.sh/XZNAMf2.png)
+!["uwutranslator in action"](https://i.kawaii.sh/dqITADa.png "uwutranslator in action")
 
 <h2 align="center">Contributing</h2>
 
-No contributions are welcomed anymore on this repository. You are free to fork this repo and add your own features there.
-
+Only meaningful pull requests will be accepted. 
 
 <h2 align="center">Self-hosting</h2>
 
-:warning:  `You are allowed to self-host the bot, but remember to follow with the license.`
-
-#### Step 0
+#### Step 1
 [Download and install Node.js to your machine if you haven't done it yet](https://nodejs.org/en/download/). To check the version of Node.js, run:
 ```
 $ node -v
@@ -47,20 +44,22 @@ This should output the version you're currently using, for example:
 v12.16.1
 ```
 
-#### Step 1
-Navigate to the bot's folder and install the required dependencies:
-```
-$ npm i
-```
-
 #### Step 2
-Modify `config.json.example` - add required values where needed:
+Modify `config.example.json` in `src` folder - add required values where needed:
 - `token` - your bot's token, which can be found in [Discord Developers page](https://discord.com/developers)
+- `public` - specifies if the bot should have `invite` command, that would let the others to easily add the bot to the other servers.
 
-Rename `config.json.example` to `config.json` 
+Rename `config.example.json` to `config.json` 
 
-#### Step 3:
-Run:
+#### Step 3
+Run the following command:
+```
+$ npm run setup
+```
+Everything will be done automatically!
+
+#### Step 4
+Next time when you'll try to launch the bot again, just use:
 ```
 $ npm run start
 ```

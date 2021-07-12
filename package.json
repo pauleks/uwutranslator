@@ -1,16 +1,17 @@
 {
     "name": "uwutranslator",
-    "version": "3.0.0",
-    "description": "UWU-ify your messages!",
+    "version": "4.0.0",
+    "description": "uwu-ify your messages!",
     "main": "main.js",
     "scripts": {
-        "start": "node main.js"
+        "start": "node src/index.js",
+        "setup": "npm i && node src/update.js && node src/index.js"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/TheOnlyGhostwolf/uwutranslator.git"
     },
-    "author": "Paulius (Ghostwolf) Gečas",
+    "author": "Ghostwolf",
     "license": "GPL-3.0-only",
     "engine": ">=13.2",
     "engineStrict": true,
@@ -20,7 +21,6 @@
     "homepage": "https://github.com/TheOnlyGhostwolf/uwutranslator",
     "dependencies": {
         "axios": "^0.21.1",
-        "chalk": "^4.1.0",
-        "discord.js": "12.1.1"
+        "discord.js": "^12.5.3"
     }
 }
