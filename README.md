@@ -1,69 +1,26 @@
-<div align="center">
-    <img src="https://i.imgur.com/FspqOKi.png">
+# uwutranslator but serverless (for Vercel)
 
-"I hate this" - everyone
+Small code rewrite for serverless ([Vercel](https://vercel.com/)) platform. 
 
-[Add uwutranslator to your server](https://discord.com/api/oauth2/authorize?client_id=764520885323300875&scope=applications.commands)
+## Setup
 
-</div>
+Click the following button to instantly create a project on Vercel.
 
----
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/TheOnlyGhostwolf/uwutranslator/tree/serverless&env=publicKey,botToken,appId)
 
-<h2 align="center">uwutranslator</h2>
+Fill in the required environment variables:
+- ` appId ` - application's ID, which you can find under "General Information" tab
+- ` publicKey ` - application's public key, which you can find under "General Information" tab
+- ` botToken ` - application's bot token, which you can find under "Bot" tab (you'll need to create a bot user)
 
-uwutranslator is a Discord integration, that "uwuifies" your messages.
+After the bot is deployed, copy the URL from "Domains" section in the dashboard.
 
-<h3>Table of Contents</h3>
+![Tutorial image](https://i.kawaii.sh/iUsrCw_.png)
 
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Self-hosting](#self-hosting)
-- [License](#license)
+Go to your application's page on Discord, paste the copied domain to "Interactions Endpoint URL" field and save the changes.
 
-<h2 align="center">Usage</h2>
+![Tutorial Image #2](https://i.kawaii.sh/3YCH7mS.png)
 
-This bot uses slash commands to function! Start typing `/` to see all available commands!
+If you're setting up the bot for the first time ever, please run ` registerCommands.js ` file in some way lol.
 
-!["Slash commands menu"](https://i.kawaii.sh/~1hjdTY.png "Slash commands menu")
-
-!["uwutranslator in action"](https://i.kawaii.sh/dqITADa.png "uwutranslator in action")
-
-<h2 align="center">Contributing</h2>
-
-Only meaningful pull requests will be accepted. 
-
-<h2 align="center">Self-hosting</h2>
-
-#### Step 1
-[Download and install Node.js to your machine if you haven't done it yet](https://nodejs.org/en/download/). To check the version of Node.js, run:
-```
-$ node -v
-```
-This should output the version you're currently using, for example:
-```
-v14.16.1
-```
-
-#### Step 2
-Modify `config.example.json` in `src` folder - add required values where needed:
-- `token` - your bot's token, which can be found in [Discord Developers page](https://discord.com/developers)
-- `public` - specifies if the bot should have `invite` command, that would let the others to easily add the bot to the other servers.
-
-Rename `config.example.json` to `config.json` 
-
-#### Step 3
-Run the following command:
-```
-$ npm run setup
-```
-Everything will be done automatically!
-
-#### Step 4
-Next time when you'll try to launch the bot again, just use:
-```
-$ npm run start
-```
-
-<h2 align="center">License</h2>
-
-[Licensed under GNU General Public License v3.0](https://github.com/TheOnlyGhostwolf/uwutranslator/blob/master/LICENSE)
+🎉 The bot is now alive! Enjoy!

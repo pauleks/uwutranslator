@@ -1,26 +1,29 @@
 {
-    "name": "uwutranslator",
-    "version": "4.0.0",
-    "description": "uwu-ify your messages!",
-    "main": "main.js",
-    "scripts": {
-        "start": "node src/index.js",
-        "setup": "npm i && node src/update.js && node src/index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/TheOnlyGhostwolf/uwutranslator.git"
-    },
-    "author": "Ghostwolf",
-    "license": "GPL-3.0-only",
-    "engine": ">=14",
-    "engineStrict": true,
-    "bugs": {
-        "url": "https://github.com/TheOnlyGhostwolf/uwutranslator/issues"
-    },
-    "homepage": "https://github.com/TheOnlyGhostwolf/uwutranslator",
-    "dependencies": {
-        "axios": "^0.21.1",
-        "discord.js": "^12.5.3"
-    }
+  "name": "uwutranslator",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">\r     <img src=\"https://i.imgur.com/FspqOKi.png\">",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheOnlyGhostwolf/uwutranslator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheOnlyGhostwolf/uwutranslator/issues"
+  },
+  "homepage": "https://github.com/TheOnlyGhostwolf/uwutranslator#readme",
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.6",
+    "tweetnacl": "^1.0.3"
+  }
 }
